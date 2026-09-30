@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Profile — BusPass</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #0f172a;
+            --text: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --background: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                    Inter,
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+
+            background: var(--background);
+
+            color: var(--dark);
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            height: 72px;
+
+            padding: 0 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                    rgba(255, 255, 255, 0.94);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom:
+                    1px solid var(--border);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            animation:
+                    navReveal 0.6s ease;
+        }
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+            color: var(--dark);
+        }
+
+        .brand-mark {
+            width: 35px;
+
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #2563eb,
+                            #1d4ed8
+                    );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            box-shadow:
+                    0 5px 12px
+                    rgba(37, 99, 235, 0.18);
+        }
+
+        .brand-name {
+            font-size: 20px;
+
+            font-weight: 750;
+
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+        }
+
+        .nav-links a {
+            padding: 9px 12px;
+
+            border-radius: 7px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition:
+                    background 0.2s ease,
+                    color 0.2s ease,
+                    transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: #eff6ff;
+
+            color: var(--primary);
+
+            transform: translateY(-1px);
+        }
+
+        .logout {
+            margin-left: 5px;
+
+            border:
+                    1px solid var(--border);
+        }
+
+        .logout:hover {
+            background: #fef2f2 !important;
+
+            color: #dc2626 !important;
+
+            border-color: #fecaca;
+
+            transform: none !important;
+        }
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .page {
+            width: min(850px, 92%);
+
+            margin: 48px auto 80px;
+
+            animation:
+                    pageReveal 0.7s ease;
+        }
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .breadcrumb {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-bottom: 15px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+
+            text-decoration: none;
+
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb span {
+            color: #cbd5e1;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            font-size: 29px;
+
+            letter-spacing: -1px;
+
+            color: var(--dark);
+
+            margin-bottom: 7px;
+        }
+
+        .page-heading p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           PROFILE CARD
+        ========================================= */
+
+        .profile-card {
+            background: var(--white);
+
+            border:
+                    1px solid var(--border);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                    0 18px 45px
+                    rgba(15, 23, 42, 0.06);
+
+            animation:
+                    cardReveal 0.7s ease 0.1s both;
+        }
+
+        /* =========================================
+           PROFILE TOP
+        ========================================= */
+
+        .profile-top {
+            padding: 30px 30px 26px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #f8fbff,
+                            #ffffff
+                    );
+
+            border-bottom:
+                    1px solid var(--border);
+        }
+
+        .avatar {
+            width: 72px;
+
+            height: 72px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #dbeafe,
+                            #eff6ff
+                    );
+
+            border:
+                    1px solid #bfdbfe;
+
+            color: var(--primary);
+
+            font-size: 26px;
+
+            font-weight: 800;
+
+            box-shadow:
+                    0 8px 20px
+                    rgba(37, 99, 235, 0.08);
+        }
+
+        .profile-intro h2 {
+            color: var(--dark);
+
+            font-size: 19px;
+
+            letter-spacing: -0.4px;
+
+            margin-bottom: 5px;
+        }
+
+        .profile-intro p {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-bottom: 9px;
+        }
+
+        .account-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            background: #eff6ff;
+
+            color: #1d4ed8;
+
+            border:
+                    1px solid #dbeafe;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+        }
+
+        .account-dot {
+            width: 5px;
+
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+        }
+
+        /* =========================================
+           DETAILS
+        ========================================= */
+
+        .details-section {
+            padding: 25px 30px;
+        }
+
+        .section-heading {
+            margin-bottom: 16px;
+        }
+
+        .section-heading h3 {
+            font-size: 13px;
+
+            color: var(--dark);
+
+            margin-bottom: 4px;
+        }
+
+        .section-heading p {
+            color: #94a3b8;
+
+            font-size: 10px;
+        }
+
+        .details {
+            border:
+                    1px solid var(--border);
+
+            border-radius: 9px;
+
+            overflow: hidden;
+        }
+
+        .detail {
+            min-height: 58px;
+
+            padding: 13px 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            background: white;
+
+            border-bottom:
+                    1px solid var(--border);
+
+            transition:
+                    background 0.2s ease;
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail:hover {
+            background: #f8fafc;
+        }
+
+        .detail-label {
+            color: #64748b;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+        }
+
+        .detail-value {
+            color: var(--dark);
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            text-align: right;
+
+            word-break: break-word;
+        }
+
+        .role {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            background: #eff6ff;
+
+            border:
+                    1px solid #dbeafe;
+
+            color: #1d4ed8;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+        /* =========================================
+           ACTIONS
+        ========================================= */
+
+        .actions {
+            padding: 20px 30px 25px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            border-top:
+                    1px solid var(--border);
+
+            background: #fcfdff;
+        }
+
+        .btn {
+            min-height: 41px;
+
+            padding: 0 17px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    background 0.2s ease;
+        }
+
+        .dashboard-btn {
+            background: white;
+
+            color: var(--text);
+
+            border:
+                    1px solid var(--border);
+        }
+
+        .dashboard-btn:hover {
+            background: #f8fafc;
+
+            border-color: #cbd5e1;
+
+            transform: translateY(-1px);
+        }
+
+        .password-btn {
+            color: white;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #2563eb,
+                            #1d4ed8
+                    );
+
+            box-shadow:
+                    0 7px 18px
+                    rgba(37, 99, 235, 0.16);
+        }
+
+        .password-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 10px 24px
+                    rgba(37, 99, 235, 0.24);
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .nav-links a {
+                padding: 8px 7px;
+
+                font-size: 10px;
+            }
+
+            .page {
+                width: 94%;
+
+                margin-top: 35px;
+            }
+
+            .profile-top {
+                padding: 25px;
+            }
+
+            .details-section {
+                padding: 22px 25px;
+            }
+
+            .actions {
+                padding: 18px 25px 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+
+                min-height: 68px;
+
+                padding: 13px 4%;
+
+                flex-direction: column;
+
+                gap: 9px;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .page-heading h1 {
+                font-size: 25px;
+            }
+
+            .profile-top {
+                padding: 23px 18px;
+
+                align-items: flex-start;
+            }
+
+            .avatar {
+                width: 58px;
+
+                height: 58px;
+
+                border-radius: 11px;
+
+                font-size: 21px;
+            }
+
+            .profile-intro h2 {
+                font-size: 17px;
+            }
+
+            .details-section {
+                padding: 22px 18px;
+            }
+
+            .detail {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 6px;
+
+                padding: 13px 14px;
+            }
+
+            .detail-value {
+                text-align: left;
+            }
+
+            .actions {
+                padding: 17px 18px 20px;
+
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .nav-links a {
+                padding: 7px 5px;
+
+                font-size: 9px;
+            }
+
+            .profile-top {
+                gap: 12px;
+            }
+
+            .profile-intro h2 {
+                font-size: 15px;
+            }
+
+            .profile-intro p {
+                font-size: 10px;
+            }
+        }
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes navReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                        translateY(-12px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                        translateY(0);
+            }
+        }
+
+        @keyframes pageReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                        translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                        translateY(0);
+            }
+        }
+
+        @keyframes cardReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                        translateY(18px)
+                        scale(0.99);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                        translateY(0)
+                        scale(1);
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+
+    <a href="/user/dashboard"
+       class="brand">
+
+        <div class="brand-mark">
+            B
+        </div>
+
+        <div class="brand-name">
+            Bus<span>Pass</span>
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="/user/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/bus-pass/apply">
+            Apply Pass
+        </a>
+
+        <a href="/bus-pass/my-passes">
+            My Passes
+        </a>
+
+        <a href="/user/notifications">
+            Notifications
+        </a>
+
+        <a href="/logout"
+           class="logout">
+            Logout
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="page">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-heading">
+
+        <div class="breadcrumb">
+
+            <a href="/user/dashboard">
+                Dashboard
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <span>
+                Profile
+            </span>
+
+        </div>
+
+
+        <h1>
+            My profile
+        </h1>
+
+
+        <p>
+            View your account information and manage your profile settings.
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE CARD -->
+
+    <section class="profile-card">
+
+
+        <!-- PROFILE HEADER -->
+
+        <div class="profile-top">
+
+
+            <div class="avatar">
+
+                <span>
+                    <span
+                            th:text="${#strings.substring(user.name, 0, 1).toUpperCase()}">
+                        A
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="profile-intro">
+
+                <h2 th:text="${user.name}">
+                    Arun
+                </h2>
+
+                <p>
+                    Bus Pass Account
+                </p>
+
+
+                <span class="account-badge">
+
+                    <span class="account-dot"></span>
+
+                    Active account
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ACCOUNT DETAILS -->
+
+        <div class="details-section">
+
+
+            <div class="section-heading">
+
+                <h3>
+                    Account information
+                </h3>
+
+                <p>
+                    Your registered account details.
+                </p>
+
+            </div>
+
+
+            <div class="details">
+
+
+                <!-- NAME -->
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Full Name
+                    </span>
+
+                    <span
+                            class="detail-value"
+                            th:text="${user.name}">
+
+                        Arun
+
+                    </span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Email Address
+                    </span>
+
+                    <span
+                            class="detail-value"
+                            th:text="${user.email}">
+
+                        arun@gmail.com
+
+                    </span>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Phone Number
+                    </span>
+
+                    <span
+                            class="detail-value"
+                            th:text="${user.phone}">
+
+                        9876543210
+
+                    </span>
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Account Type
+                    </span>
+
+                    <span
+                            class="role"
+                            th:text="${user.role}">
+
+                        USER
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="actions">
+
+
+            <a
+                    href="/user/dashboard"
+                    class="btn dashboard-btn">
+
+                ← Dashboard
+
+            </a>
+
+
+            <a
+                    href="/user/change-password"
+                    class="btn password-btn">
+
+                Change Password →
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>
