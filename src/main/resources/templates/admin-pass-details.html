@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
@@ -588,6 +589,404 @@
             backdrop-filter: blur(2px);
         }
 
+        /* PRINTABLE BUS PASS */
+        .heading-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            padding: 0 16px;
+            border: 0;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 750;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(37,99,235,.18);
+            transition: .25s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37,99,235,.24);
+        }
+
+        .print-pass {
+            display: none;
+        }
+
+        .pass-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .pass-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pass-logo {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 23px;
+        }
+
+        .pass-title {
+            color: #0f172a;
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 1.3px;
+        }
+
+        .pass-subtitle {
+            color: #64748b;
+            font-size: 9px;
+            margin-top: 3px;
+            letter-spacing: .25px;
+        }
+
+        .pass-status {
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .8px;
+        }
+
+        .pass-divider {
+            height: 1px;
+            background: #dbe3ee;
+            margin: 17px 0;
+        }
+
+        .pass-main {
+            display: grid;
+            grid-template-columns: 94px 1fr;
+            gap: 18px;
+        }
+
+        .pass-photo {
+            height: 112px;
+            border: 1px dashed #b8c5d6;
+            border-radius: 9px;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+        }
+
+        .photo-placeholder {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 7px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            font-size: 22px;
+        }
+
+        .pass-photo span {
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        .pass-field span {
+            display: block;
+            margin-bottom: 4px;
+            color: #64748b;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .65px;
+        }
+
+        .pass-field strong {
+            display: block;
+            color: #0f172a;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .pass-holder-name {
+            margin-bottom: 13px;
+        }
+
+        .pass-holder-name strong {
+            font-size: 18px;
+        }
+
+        .pass-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .pass-route {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            background: #f8fbff;
+        }
+
+        .route-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .route-heading span {
+            color: #64748b;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        .route-heading strong {
+            color: #1d4ed8;
+            font-size: 11px;
+        }
+
+        .route-line {
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            align-items: center;
+        }
+
+        .route-stop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .route-stop.destination {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .stop-dot {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 auto;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .route-stop small {
+            display: block;
+            color: #94a3b8;
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+
+        .route-stop strong {
+            display: block;
+            color: #0f172a;
+            margin-top: 2px;
+            font-size: 11px;
+        }
+
+        .route-connector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .route-connector span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #93c5fd;
+        }
+
+        .pass-validity {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            align-items: center;
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 9px;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+
+        .pass-validity span {
+            display: block;
+            color: #94a3b8;
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        .pass-validity strong {
+            display: block;
+            margin-top: 4px;
+            color: #fff;
+            font-size: 11px;
+        }
+
+        .validity-divider {
+            width: 1px;
+            height: 25px;
+            background: #334155;
+        }
+
+        .pass-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .pass-footer strong {
+            display: block;
+            color: #334155;
+            font-size: 8px;
+        }
+
+        .pass-footer span {
+            display: block;
+            color: #94a3b8;
+            margin-top: 3px;
+            font-size: 7px;
+        }
+
+        .pass-id-mark {
+            text-align: right;
+        }
+
+        .pass-id-mark span {
+            color: #64748b;
+        }
+
+        .pass-id-mark strong {
+            color: #1d4ed8;
+            font-size: 12px;
+        }
+
+        /* PRINT */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+
+            html,
+            body {
+                width: 210mm;
+                min-height: 297mm;
+                background: #fff !important;
+                color: #111827;
+            }
+
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .sidebar,
+            .topbar,
+            .page-heading,
+            .card,
+            .overlay,
+            .print-btn,
+            .back-btn {
+                display: none !important;
+            }
+
+            .main {
+                margin: 0 !important;
+                min-height: 0 !important;
+            }
+
+            .content {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .print-pass {
+                display: block !important;
+                width: 180mm;
+                margin: 22mm auto 0;
+                padding: 9mm;
+                border: 1px solid #cbd5e1;
+                border-top: 5px solid #2563eb;
+                border-radius: 4mm;
+                background: #fff;
+                box-shadow: none;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .pass-status {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #dcfce7 !important;
+                color: #15803d !important;
+            }
+
+            .pass-logo,
+            .pass-validity {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .pass-logo {
+                background: #2563eb !important;
+            }
+
+            .pass-validity {
+                background: #0f172a !important;
+            }
+
+            .pass-route {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #f8fbff !important;
+            }
+
+            .pass-photo {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #f8fafc !important;
+            }
+        }
+
         /* ANIMATION */
         @keyframes sidebarIn {
             from { opacity: 0; transform: translateX(-22px); }
@@ -642,6 +1041,17 @@
             .page-heading {
                 align-items: flex-start;
                 flex-direction: column;
+            }
+
+            .heading-actions {
+                width: 100%;
+                flex-direction: column-reverse;
+                align-items: stretch;
+            }
+
+            .print-btn,
+            .back-btn {
+                width: 100%;
             }
 
             .grid {
@@ -794,11 +1204,139 @@
                 <p>Review applicant information, route details and pass approval status.</p>
             </div>
 
-            <a href="/admin/dashboard" class="back-btn">
-                ← Back to Dashboard
-            </a>
+            <div class="heading-actions">
+                <button type="button" class="print-btn" onclick="window.print()">
+                    🖨 Print Bus Pass
+                </button>
+
+                <a href="/admin/dashboard" class="back-btn">
+                    ← Back to Dashboard
+                </a>
+            </div>
 
         </div>
+
+        <!-- PRINTABLE BUS PASS -->
+        <section class="print-pass" aria-label="Printable Bus Pass">
+
+            <div class="pass-top">
+                <div class="pass-brand">
+                    <div class="pass-logo">🚌</div>
+                    <div>
+                        <div class="pass-title">BUS PASS</div>
+                        <div class="pass-subtitle">Bus Pass Management System</div>
+                    </div>
+                </div>
+
+                <div class="pass-status"
+                     th:text="${pass.status}">
+                    APPROVED
+                </div>
+            </div>
+
+            <div class="pass-divider"></div>
+
+            <div class="pass-main">
+
+                <div class="pass-photo">
+                    <div class="photo-placeholder">👤</div>
+                    <span>PASS HOLDER</span>
+                </div>
+
+                <div class="pass-details">
+
+                    <div class="pass-field pass-holder-name">
+                        <span>Passenger Name</span>
+                        <strong th:text="${pass.user.name}">
+                            Student Name
+                        </strong>
+                    </div>
+
+                    <div class="pass-grid">
+
+                        <div class="pass-field">
+                            <span>Pass ID</span>
+                            <strong th:text="${pass.id}">1001</strong>
+                        </div>
+
+                        <div class="pass-field">
+                            <span>Pass Type</span>
+                            <strong th:text="${pass.passType}">STUDENT</strong>
+                        </div>
+
+                        <div class="pass-field">
+                            <span>Phone</span>
+                            <strong th:text="${pass.user.phone}">9876543210</strong>
+                        </div>
+
+                        <div class="pass-field">
+                            <span>Fare</span>
+                            <strong>₹<span th:text="${pass.route.fare}">20</span></strong>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="pass-route">
+
+                <div class="route-heading">
+                    <span>AUTHORIZED ROUTE</span>
+                    <strong th:text="${pass.route.routeName}">Route 101</strong>
+                </div>
+
+                <div class="route-line">
+                    <div class="route-stop">
+                        <span class="stop-dot"></span>
+                        <div>
+                            <small>FROM</small>
+                            <strong th:text="${pass.route.startLocation}">Trichy</strong>
+                        </div>
+                    </div>
+
+                    <div class="route-connector">
+                        <span></span><span></span><span></span>
+                    </div>
+
+                    <div class="route-stop destination">
+                        <span class="stop-dot"></span>
+                        <div>
+                            <small>TO</small>
+                            <strong th:text="${pass.route.endLocation}">Srirangam</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pass-validity">
+
+                <div>
+                    <span>VALID FROM</span>
+                    <strong th:text="${pass.startDate}">2026-10-01</strong>
+                </div>
+
+                <div class="validity-divider"></div>
+
+                <div>
+                    <span>VALID UNTIL</span>
+                    <strong th:text="${pass.endDate}">2026-12-31</strong>
+                </div>
+
+            </div>
+
+            <div class="pass-footer">
+                <div>
+                    <strong>Bus Pass Management System</strong>
+                    <span>Authorized travel pass • Keep this pass with you while travelling</span>
+                </div>
+
+                <div class="pass-id-mark">
+                    <span>PASS ID</span>
+                    <strong th:text="${pass.id}">1001</strong>
+                </div>
+            </div>
+
+        </section>
 
         <!-- APPLICANT -->
         <div class="card">
@@ -1043,3 +1581,4 @@
 
 </body>
 </html>
+```
