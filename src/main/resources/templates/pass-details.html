@@ -1039,52 +1039,377 @@
         }
 
         /* =========================
+           PROFESSIONAL PRINT PASS
+        ========================= */
+
+        .print-pass {
+            display: none;
+        }
+
+        .print-pass-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .print-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .print-logo {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .print-title {
+            color: #0f172a;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1.4px;
+        }
+
+        .print-subtitle {
+            margin-top: 3px;
+            color: #64748b;
+            font-size: 9px;
+            letter-spacing: .3px;
+        }
+
+        .print-approved {
+            padding: 7px 13px;
+            border: 1px solid #bbf7d0;
+            border-radius: 999px;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .8px;
+        }
+
+        .print-rule {
+            height: 1px;
+            margin: 16px 0;
+            background: #dbe3ee;
+        }
+
+        .print-holder {
+            display: grid;
+            grid-template-columns: 92px 1fr;
+            gap: 18px;
+        }
+
+        .print-photo {
+            height: 112px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #b8c5d6;
+            border-radius: 9px;
+            background: #f8fafc;
+            color: #94a3b8;
+        }
+
+        .print-photo-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 7px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            font-size: 22px;
+        }
+
+        .print-photo span {
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        .print-name span,
+        .print-info-grid span,
+        .print-route-head span,
+        .print-stop span,
+        .print-validity span,
+        .print-id span {
+            display: block;
+            color: #64748b;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .65px;
+        }
+
+        .print-name strong {
+            display: block;
+            margin-top: 4px;
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 850;
+        }
+
+        .print-info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .print-info-grid strong {
+            display: block;
+            margin-top: 4px;
+            color: #0f172a;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .print-route {
+            margin-top: 18px;
+            padding: 15px 17px;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            background: #f8fbff;
+        }
+
+        .print-route-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .print-route-head strong {
+            display: block;
+            margin-top: 4px;
+            color: #1d4ed8;
+            font-size: 12px;
+            font-weight: 850;
+        }
+
+        .print-route-head small {
+            color: #94a3b8;
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: .6px;
+        }
+
+        .print-route-line {
+            display: grid;
+            grid-template-columns: 1fr 110px 1fr;
+            align-items: center;
+        }
+
+        .print-stop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .print-stop.destination {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .print-stop i {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 auto;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .print-stop strong {
+            display: block;
+            margin-top: 3px;
+            color: #0f172a;
+            font-size: 11px;
+        }
+
+        .print-journey {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .print-journey span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #93c5fd;
+        }
+
+        .print-journey b {
+            margin-left: 2px;
+            color: #2563eb;
+            font-size: 15px;
+        }
+
+        .print-validity {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr 1px 1fr;
+            align-items: center;
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 9px;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+
+        .print-validity strong {
+            display: block;
+            margin-top: 4px;
+            color: white;
+            font-size: 11px;
+        }
+
+        .print-validity-line {
+            width: 1px;
+            height: 26px;
+            background: #334155;
+        }
+
+        .print-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .print-bottom strong {
+            display: block;
+            color: #334155;
+            font-size: 8px;
+        }
+
+        .print-bottom span {
+            display: block;
+            margin-top: 3px;
+            color: #94a3b8;
+            font-size: 7px;
+        }
+
+        .print-id {
+            text-align: right;
+        }
+
+        .print-id strong {
+            color: #1d4ed8;
+            font-size: 12px;
+        }
+
+        .print-security {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #eef2f7;
+            color: #94a3b8;
+            text-align: center;
+            font-size: 7px;
+        }
+
+        /* =========================
            PRINT
         ========================= */
 
         @media print {
 
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+
+            html,
             body {
-                background: white;
+                width: 210mm;
+                min-height: 297mm;
+                background: #fff !important;
+            }
+
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
             .navbar,
             .breadcrumb,
             .page-heading,
+            .pass-card,
             .actions,
             .expired-box {
                 display: none !important;
             }
 
             .page {
-                width: 100%;
-
-                margin: 0;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
-            .pass-card {
+            .print-pass {
+                display: block !important;
+                width: 180mm;
+                margin: 25mm auto 0;
+                padding: 9mm;
                 border: 1px solid #cbd5e1;
-
-                box-shadow: none;
-
-                border-radius: 0;
+                border-top: 5px solid #2563eb;
+                border-radius: 4mm;
+                background: #fff !important;
+                box-shadow: none !important;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .pass-header {
+            .print-logo,
+            .print-validity {
                 -webkit-print-color-adjust: exact;
-
                 print-color-adjust: exact;
             }
 
-            .item,
-            .route-box,
-            .remark,
-            .status {
-                -webkit-print-color-adjust: exact;
+            .print-logo {
+                background: #2563eb !important;
+            }
 
+            .print-validity {
+                background: #0f172a !important;
+            }
+
+            .print-route,
+            .print-photo,
+            .print-approved {
+                -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
+            .print-route {
+                background: #f8fbff !important;
+            }
+
+            .print-photo {
+                background: #f8fafc !important;
+            }
+
+            .print-approved {
+                background: #dcfce7 !important;
+                color: #15803d !important;
+            }
         }
 
         /* =========================
@@ -1238,65 +1563,210 @@
 
 
     <!-- =========================================
-         PASS CARD
+         PROFESSIONAL PRINT PASS
     ========================================= -->
+
+    <section class="print-pass" aria-label="Printable Bus Pass">
+
+        <div class="print-pass-header">
+            <div class="print-brand">
+                <div class="print-logo">🚌</div>
+                <div>
+                    <div class="print-title">BUS PASS</div>
+                    <div class="print-subtitle">Bus Pass Management System</div>
+                </div>
+            </div>
+
+            <div class="print-approved" th:if="${expired}">EXPIRED</div>
+            <div class="print-approved" th:if="${!expired}"
+                 th:text="${pass.status}">APPROVED</div>
+        </div>
+
+        <div class="print-rule"></div>
+
+        <div class="print-holder">
+
+            <div class="print-photo">
+                <div class="print-photo-icon">👤</div>
+                <span>PASS HOLDER</span>
+            </div>
+
+            <div class="print-holder-info">
+
+                <div class="print-name">
+                    <span>Passenger Name</span>
+                    <strong th:text="${pass.user.name}">Student Name</strong>
+                </div>
+
+                <div class="print-info-grid">
+
+                    <div>
+                        <span>Pass ID</span>
+                        <strong th:text="${pass.id}">1001</strong>
+                    </div>
+
+                    <div>
+                        <span>Pass Type</span>
+                        <strong th:text="${pass.passType}">STUDENT</strong>
+                    </div>
+
+                    <div>
+                        <span>Phone</span>
+                        <strong th:text="${pass.user.phone}">9876543210</strong>
+                    </div>
+
+                    <div>
+                        <span>Fare</span>
+                        <strong>₹<span th:text="${pass.route.fare}">20</span></strong>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="print-route">
+
+            <div class="print-route-head">
+                <div>
+                    <span>AUTHORIZED ROUTE</span>
+                    <strong th:text="${pass.route.routeName}">Route 101</strong>
+                </div>
+
+                <small>VALID TRAVEL ROUTE</small>
+            </div>
+
+            <div class="print-route-line">
+
+                <div class="print-stop">
+                    <i></i>
+                    <div>
+                        <span>FROM</span>
+                        <strong th:text="${pass.route.startLocation}">Trichy</strong>
+                    </div>
+                </div>
+
+                <div class="print-journey">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <b>→</b>
+                </div>
+
+                <div class="print-stop destination">
+                    <div>
+                        <span>TO</span>
+                        <strong th:text="${pass.route.endLocation}">Srirangam</strong>
+                    </div>
+                    <i></i>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="print-validity">
+
+            <div>
+                <span>VALID FROM</span>
+                <strong th:text="${pass.startDate}">2026-10-01</strong>
+            </div>
+
+            <div class="print-validity-line"></div>
+
+            <div>
+                <span>VALID UNTIL</span>
+                <strong th:text="${pass.endDate}">2026-12-31</strong>
+            </div>
+
+            <div class="print-validity-line"></div>
+
+            <div>
+                <span>STATUS</span>
+                <strong th:if="${expired}">EXPIRED</strong>
+                <strong th:if="${!expired}" th:text="${pass.status}">APPROVED</strong>
+            </div>
+
+        </div>
+
+        <div class="print-bottom">
+
+            <div>
+                <strong>BUS PASS MANAGEMENT SYSTEM</strong>
+                <span>Authorized travel pass • Keep this pass with you while travelling</span>
+            </div>
+
+            <div class="print-id">
+                <span>PASS ID</span>
+                <strong th:text="${pass.id}">1001</strong>
+            </div>
+
+        </div>
+
+        <div class="print-security">
+            This pass is system generated and valid only for the passenger and route mentioned above.
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         PASS CARD
+    =========================================-->
 
     <section class="pass-card">
 
 
-        <!-- HEADER -->
+      
 
-        <div class="pass-header">
+    <div class="pass-header">
 
-            <div class="header-content">
+        <div class="header-content">
 
 
-                <div class="pass-brand">
+            <div class="pass-brand">
 
-                    <div class="pass-icon">
-                        B
-                    </div>
+                <div class="pass-icon">
+                    B
+                </div>
 
-                    <div>
+                <div>
 
-                        <h2>
-                            BusPass
-                        </h2>
+                    <h2>
+                        BusPass
+                    </h2>
 
-                        <p>
-                            Official bus pass information
-                        </p>
-
-                    </div>
+                    <p>
+                        Official bus pass information
+                    </p>
 
                 </div>
 
+            </div>
 
-                <div class="pass-id">
+
+            <div class="pass-id">
 
                     <span class="pass-id-label">
                         Pass ID
                     </span>
 
-                    <span
-                            class="pass-id-value"
-                            th:text="${pass.id}">
+                <span
+                        class="pass-id-value"
+                        th:text="${pass.id}">
 
                         1001
 
                     </span>
 
-                </div>
-
-
             </div>
+
 
         </div>
 
+    </div>
 
-        <!-- STATUS -->
 
-        <div class="status-bar">
+    <!-- STATUS -->
+
+    <div class="status-bar">
 
 
             <span class="status-caption">
@@ -1304,8 +1774,8 @@
             </span>
 
 
-            <span th:if="${expired}"
-                  class="status expired">
+        <span th:if="${expired}"
+              class="status expired">
 
                 <span class="status-dot"></span>
 
@@ -1314,9 +1784,9 @@
             </span>
 
 
-            <span th:if="${!expired}"
-                  class="status"
-                  th:classappend="${pass.status == 'APPROVED'} ? ' approved' :
+        <span th:if="${!expired}"
+              class="status"
+              th:classappend="${pass.status == 'APPROVED'} ? ' approved' :
                                   (${pass.status == 'PENDING'} ? ' pending' : ' rejected')">
 
                 <span class="status-dot"></span>
@@ -1327,282 +1797,282 @@
 
             </span>
 
-        </div>
+    </div>
 
 
-        <!-- DETAILS -->
+    <!-- DETAILS -->
 
-        <div class="details">
-
-
-            <!-- =================================
-                 PASSENGER
-            ================================= -->
-
-            <section class="section">
+    <div class="details">
 
 
-                <div class="section-header">
+        <!-- =================================
+             PASSENGER
+        ================================= -->
 
-                    <h3>
-                        Passenger details
-                    </h3>
-
-                    <p>
-                        Registered information associated with this pass.
-                    </p>
-
-                </div>
+        <section class="section">
 
 
-                <div class="grid">
+            <div class="section-header">
+
+                <h3>
+                    Passenger details
+                </h3>
+
+                <p>
+                    Registered information associated with this pass.
+                </p>
+
+            </div>
 
 
-                    <div class="item">
+            <div class="grid">
+
+
+                <div class="item">
 
                         <span class="label">
                             Full name
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.user.name}">
+                    <span
+                            class="value"
+                            th:text="${pass.user.name}">
 
                             User Name
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             Email address
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.user.email}">
+                    <span
+                            class="value"
+                            th:text="${pass.user.email}">
 
                             user@gmail.com
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             Phone number
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.user.phone}">
+                    <span
+                            class="value"
+                            th:text="${pass.user.phone}">
 
                             9876543210
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             Pass type
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.passType}">
+                    <span
+                            class="value"
+                            th:text="${pass.passType}">
 
                             STUDENT
 
                         </span>
 
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================
-                 ROUTE
-            ================================= -->
-
-            <section class="section">
-
-
-                <div class="section-header">
-
-                    <h3>
-                        Route details
-                    </h3>
-
-                    <p>
-                        Your selected travel route.
-                    </p>
-
                 </div>
 
 
-                <div class="route-box">
+            </div>
+
+        </section>
 
 
-                    <div class="route-top">
+        <!-- =================================
+             ROUTE
+        ================================= -->
 
-                        <div
-                                class="route-name"
-                                th:text="${pass.route.routeName}">
-
-                            Route 101
-
-                        </div>
+        <section class="section">
 
 
-                        <div class="route-label">
-                            Assigned route
-                        </div>
+            <div class="section-header">
+
+                <h3>
+                    Route details
+                </h3>
+
+                <p>
+                    Your selected travel route.
+                </p>
+
+            </div>
+
+
+            <div class="route-box">
+
+
+                <div class="route-top">
+
+                    <div
+                            class="route-name"
+                            th:text="${pass.route.routeName}">
+
+                        Route 101
 
                     </div>
 
 
-                    <div class="route-line">
+                    <div class="route-label">
+                        Assigned route
+                    </div>
+
+                </div>
 
 
-                        <div class="location">
+                <div class="route-line">
+
+
+                    <div class="location">
 
                             <span class="location-label">
                                 Starting point
                             </span>
 
-                            <span
-                                    class="location-name"
-                                    th:text="${pass.route.startLocation}">
+                        <span
+                                class="location-name"
+                                th:text="${pass.route.startLocation}">
 
                                 Trichy
 
                             </span>
 
-                        </div>
+                    </div>
 
 
-                        <div class="route-arrow">
-                            →
-                        </div>
+                    <div class="route-arrow">
+                        →
+                    </div>
 
 
-                        <div class="location">
+                    <div class="location">
 
                             <span class="location-label">
                                 Destination
                             </span>
 
-                            <span
-                                    class="location-name"
-                                    th:text="${pass.route.endLocation}">
+                        <span
+                                class="location-name"
+                                th:text="${pass.route.endLocation}">
 
                                 Srirangam
 
                             </span>
 
-                        </div>
-
-
                     </div>
 
-                </div>
-
-            </section>
-
-
-            <!-- =================================
-                 PASS INFORMATION
-            ================================= -->
-
-            <section class="section">
-
-
-                <div class="section-header">
-
-                    <h3>
-                        Pass information
-                    </h3>
-
-                    <p>
-                        Validity period and fare information.
-                    </p>
 
                 </div>
 
+            </div>
 
-                <div class="grid">
+        </section>
 
 
-                    <div class="item">
+        <!-- =================================
+             PASS INFORMATION
+        ================================= -->
+
+        <section class="section">
+
+
+            <div class="section-header">
+
+                <h3>
+                    Pass information
+                </h3>
+
+                <p>
+                    Validity period and fare information.
+                </p>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="item">
 
                         <span class="label">
                             Start date
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.startDate}">
+                    <span
+                            class="value"
+                            th:text="${pass.startDate}">
 
                             2026-10-01
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             End date
                         </span>
 
-                        <span
-                                class="value"
-                                th:text="${pass.endDate}">
+                    <span
+                            class="value"
+                            th:text="${pass.endDate}">
 
                             2026-12-31
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             Route fare
                         </span>
 
-                        <span class="value">
+                    <span class="value">
 
                             ₹<span
-                                th:text="${pass.route.fare}">
+                            th:text="${pass.route.fare}">
                                 20
                             </span>
 
                         </span>
 
-                    </div>
+                </div>
 
 
-                    <div class="item">
+                <div class="item">
 
                         <span class="label">
                             Application status
                         </span>
 
-                        <span class="value">
+                    <span class="value">
 
                             <span th:if="${expired}">
                                 Expired
@@ -1616,101 +2086,101 @@
 
                         </span>
 
-                    </div>
-
-
                 </div>
 
 
-                <!-- ADMIN REMARK -->
+            </div>
 
-                <div
-                        class="remark"
-                        th:if="${pass.adminRemark != null and !pass.adminRemark.isEmpty()}">
+
+            <!-- ADMIN REMARK -->
+
+            <div
+                    class="remark"
+                    th:if="${pass.adminRemark != null and !pass.adminRemark.isEmpty()}">
 
                     <span class="remark-title">
                         Admin remark
                     </span>
 
-                    <span th:text="${pass.adminRemark}">
+                <span th:text="${pass.adminRemark}">
                         Bus pass approved.
                     </span>
 
+            </div>
+
+
+            <!-- EXPIRED -->
+
+            <div
+                    class="expired-box"
+                    th:if="${expired}">
+
+
+                <div class="expired-icon">
+                    !
                 </div>
 
 
-                <!-- EXPIRED -->
+                <div class="expired-content">
 
-                <div
-                        class="expired-box"
-                        th:if="${expired}">
+                    <strong>
+                        This bus pass has expired
+                    </strong>
 
-
-                    <div class="expired-icon">
-                        !
-                    </div>
-
-
-                    <div class="expired-content">
-
-                        <strong>
-                            This bus pass has expired
-                        </strong>
-
-                        <span>
+                    <span>
                             You can submit a renewal application
                             using the Renew Pass option below.
                         </span>
 
-                    </div>
-
-
                 </div>
 
 
-            </section>
+            </div>
 
 
-        </div>
+        </section>
 
 
-        <!-- =================================
-             ACTIONS
-        ================================= -->
-
-        <div class="actions">
+    </div>
 
 
-            <button
-                    type="button"
-                    class="btn print-btn"
-                    onclick="window.print()">
+    <!-- =================================
+         ACTIONS
+    ================================= -->
 
-                Print pass
-
-            </button>
+    <div class="actions">
 
 
-            <a
-                    th:if="${expired and pass.status == 'APPROVED'}"
-                    th:href="@{/bus-pass/renew/{id}(id=${pass.id})}"
-                    class="btn renew-btn">
+        <button
+                type="button"
+                class="btn print-btn"
+                onclick="window.print()">
 
-                Renew pass
+            Print pass
 
-            </a>
-
-
-            <a
-                    href="/bus-pass/my-passes"
-                    class="btn back-btn">
-
-                ← Back to passes
-
-            </a>
+        </button>
 
 
-        </div>
+        <a
+                th:if="${expired and pass.status == 'APPROVED'}"
+                th:href="@{/bus-pass/renew/{id}(id=${pass.id})}"
+                class="btn renew-btn">
+
+            Renew pass
+
+        </a>
+
+
+        <a
+                href="/bus-pass/my-passes"
+                class="btn back-btn">
+
+            ← Back to passes
+
+        </a>
+
+
+    </div>
 
 
     </section>
@@ -1722,4 +2192,5 @@
 </body>
 
 </html>
+
 
